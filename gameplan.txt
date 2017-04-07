@@ -1,0 +1,16 @@
+
+
+- Use a collection view to display a series of levels on the track page
+- each tracks also allow users to see all levels in track displayed modally after clicking 	on the corresponding track in the track page
+
+- Use maybe a TableView to show achievements, progress towards level completion, etc
+
+
+- Make an encounter managers
+
+— Some characters follow a path determined via a GKObstacle Graph
+
+- Use CoreData filter to filter out locked levels/already finished levels/etc
+	- CoreData filter can also be used to blur a screen for a game in pause mode
+
+- Bonus: GridGraph game
