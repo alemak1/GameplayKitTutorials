@@ -55,7 +55,25 @@ class GameScene: SKScene {
         
         
         EnemyGroup.generateBasicRandomSpikeBall(forParentNode: self, number: 4)
-        EnemyGroup.generateBasicRandomEnemySun(forParentNode: self, number: 2)
+        
+        let spikeman1 = Spikeman(edgePosition: nil, size: nil, scalingFactor: 0.40, edgeLocation: .Bottom)
+        spikeman1.addEdgeWalkAnimation()
+        
+        let spikeman2 = Spikeman(edgePosition: nil, size: nil, scalingFactor: 0.40, edgeLocation: .Left)
+        spikeman2.addEdgeWalkAnimation()
+        
+        let spikeman3 = Spikeman(edgePosition: nil, size: nil, scalingFactor: 0.40, edgeLocation: .Right)
+        spikeman3.addEdgeWalkAnimation()
+        
+        let spikeman4 = Spikeman(edgePosition: nil, size: nil, scalingFactor: 0.40, edgeLocation: .Top)
+        spikeman4.addEdgeWalkAnimation()
+        
+        self.addChild(spikeman1)
+        self.addChild(spikeman2)
+        self.addChild(spikeman3)
+        self.addChild(spikeman4)
+        
+       // EnemyGroup.generateBasicRandomEnemySun(forParentNode: self, number: 2)
        // EnemyGroup.generateBasicRandomEnemyCloud(forParentNode: self, number: 3)
         
        // ItemGroup.generateBasicRandomCoin(forParentNode: self, number: 3, ofType: .Silver)

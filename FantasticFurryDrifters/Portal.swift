@@ -9,6 +9,11 @@
 import Foundation
 import SpriteKit
 
+/**
+    Yellow portals transport bunnies closer to the coins
+    Orange portals transport bunnies closer to the carrots
+ 
+ **/
 
 class Portal: SKSpriteNode{
     

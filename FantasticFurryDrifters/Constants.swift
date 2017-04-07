@@ -17,3 +17,10 @@ class ScreenSizeConstants{
     static let HalfScreenHeight = UIScreen.main.bounds.size.height/2.00
     static let HalfScreenWidth = UIScreen.main.bounds.size.width/2.00
 }
+
+class ScreenPoints{
+    static let TopLeftCorner = CGPoint(x: -Int(ScreenSizeConstants.HalfScreenWidth), y: Int(ScreenSizeConstants.HalfScreenHeight))
+    static let TopRightCorner = CGPoint(x: Int(ScreenSizeConstants.HalfScreenWidth), y: Int(ScreenSizeConstants.HalfScreenHeight))
+    static let BottomLeftCorner = CGPoint(x: -Int(ScreenSizeConstants.HalfScreenWidth), y: -Int(ScreenSizeConstants.HalfScreenHeight))
+    static let BottomRightCorner = CGPoint(x: Int(ScreenSizeConstants.HalfScreenWidth), y: -Int(ScreenSizeConstants.HalfScreenHeight))
+}

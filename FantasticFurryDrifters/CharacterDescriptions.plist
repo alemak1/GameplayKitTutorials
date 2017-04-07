@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Tornados</key>
+	<string></string>
+	<key>EdgeSpikes</key>
+	<string></string>
+	<key>EnemyCloud</key>
+	<string></string>
+	<key>EnemySun</key>
+	<string></string>
+	<key>Spikeman</key>
+	<string></string>
+	<key>Spikeball</key>
+	<string></string>
+	<key>OrangePortal</key>
+	<string>An orange portal transports bunnies closer to on-screen carrots.</string>
+	<key>YellowPortal</key>
+	<string>A yellow portal transports bunnies closer to on-screen coins.</string>
+	<key>GoldCarrot</key>
+	<string>A gold carrot restores all lives.</string>
+	<key>RegularCarrot</key>
+	<string>A regular carrot adds 1 more life.</string>
+	<key>BronzeCoin</key>
+	<string>A bronze coin is worth 1 point.</string>
+	<key>SilverCoin</key>
+	<string>A silver coin is worth 3 points.</string>
+	<key>GoldCoin</key>
+	<string>A gold coin is worth 5 points.</string>
+</dict>
+</plist>
