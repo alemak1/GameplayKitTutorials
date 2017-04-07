@@ -8,7 +8,7 @@
 
 import Foundation
 import SpriteKit
-
+import GameplayKit
 
 class Spikeball: SKSpriteNode{
     
@@ -22,16 +22,22 @@ class Spikeball: SKSpriteNode{
         super.init(texture: texture, color: color, size: size)
     }
     
-    convenience init(position: CGPoint, size: CGSize) {
+    convenience init(position: CGPoint?, size: CGSize?, scalingFactor: CGFloat = 1.00) {
         
         let spikeBallTexture = SKTexture(image: #imageLiteral(resourceName: "spikeBall1"))
-        let spikeBallSize = spikeBallTexture.size()
+        let textureSize = spikeBallTexture.size()
         
+        let spikeBallSize = size ?? textureSize
+        let spikeBallPosition = position ?? RandomGenerator.getRandomScreenPoint()
+            
         self.init(texture: spikeBallTexture, color: .clear, size: spikeBallSize)
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        self.size = size
-        self.position = position
+        self.size = spikeBallSize
+        self.position = spikeBallPosition
+        
+        self.xScale *= scalingFactor
+        self.yScale *= scalingFactor
         
         configurePhysicsProperties()
         configureAnimations()
@@ -43,6 +49,7 @@ class Spikeball: SKSpriteNode{
         let radius = self.size.width/2.0
         self.physicsBody = SKPhysicsBody(circleOfRadius: radius)
         self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = false
     
         
     }
@@ -58,5 +65,7 @@ class Spikeball: SKSpriteNode{
         self.run(defaultAnimation, withKey: "defaultAnimation")
         
     }
+    
+    
     
 }

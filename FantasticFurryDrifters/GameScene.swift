@@ -20,7 +20,6 @@ class GameScene: SKScene {
     
     
     var player: Player!
-    var playerEntity: GKPlayer!
     
     override func sceneDidLoad() {
         
@@ -41,7 +40,7 @@ class GameScene: SKScene {
 //        })
         
         
-        backgroundColor = UIColor.green
+        backgroundColor = ColorGenerator.getColor(colorType: .SkyBlue)
         
         self.lastUpdateTime = 0
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -49,19 +48,21 @@ class GameScene: SKScene {
        
         
        
-        //player = Player(scalingFactor: 0.40)
-        //self.addChild(player)
+        player = Player(scalingFactor: 0.10)
+        self.addChild(player)
         
         
-        self.playerEntity = GKPlayer(image: #imageLiteral(resourceName: "SOrabbit"), motionManager: self.motionManager, position: nil, size: nil, physicsBody: nil)
-        let playerSprite = playerEntity.component(ofType: GKSpriteComponent.self)!.node
-        self.addChild(playerSprite)
         
-        let pos = CGPoint(x: 30, y: 10)
-        let size = CGSize(width: 60, height: 60)
-        let spikeBall = Spikeball(position: pos, size: size)
-        self.addChild(spikeBall)
         
+        EnemyGroup.generateBasicRandomSpikeBall(forParentNode: self, number: 4)
+        EnemyGroup.generateBasicRandomEnemySun(forParentNode: self, number: 2)
+       // EnemyGroup.generateBasicRandomEnemyCloud(forParentNode: self, number: 3)
+        
+       // ItemGroup.generateBasicRandomCoin(forParentNode: self, number: 3, ofType: .Silver)
+       // ItemGroup.generateBasicRandomCoin(forParentNode: self, number: 1, ofType: .Gold)
+        //ItemGroup.generateBasicRandomCoin(forParentNode: self, number: 2, ofType: .Bronze)
+        ItemGroup.generateBasicRandomCarrot(forParentNode: self, number: 3, ofType: .Gold)
+        ItemGroup.generateBasicRandomCarrot(forParentNode: self, number: 2, ofType: .Regular)
         
         //Configure bottom edge
        // let bottomEdge = SpikeEdge(edgeLocation: .Bottom)
@@ -112,7 +113,7 @@ class GameScene: SKScene {
     
     override func didSimulatePhysics() {
         if let deviceMotion = self.motionManager.deviceMotion{
-            //player.respondToDeviceMotion(deviceMotion: deviceMotion)
+            player.respondToDeviceMotion(deviceMotion: deviceMotion)
            
         }
     }
@@ -128,9 +129,7 @@ class GameScene: SKScene {
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
-        let playerMotionResponder = playerEntity.component(ofType: GKMotionResponderComponent.self)
-    
-        playerMotionResponder?.update(deltaTime: dt)
+       
         /**
         if let gyroData = motionManager.gyroData{
             let verticalRotationRate = -gyroData.rotationRate.x

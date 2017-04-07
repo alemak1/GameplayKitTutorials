@@ -26,6 +26,10 @@
 		BD2E0A411E96B5BD00C54671 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E0A401E96B5BD00C54671 /* AnimationComponent.swift */; };
 		BD2E0A431E96B63C00C54671 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E0A421E96B63C00C54671 /* HealthComponent.swift */; };
 		BD2E0A451E96B66800C54671 /* ItemTrackerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E0A441E96B66800C54671 /* ItemTrackerComponent.swift */; };
+		BD30140B1E9758EB00F54F7E /* ColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD30140A1E9758EB00F54F7E /* ColorGenerator.swift */; };
+		BD30140D1E975A1800F54F7E /* EnemyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD30140C1E975A1800F54F7E /* EnemyGroup.swift */; };
+		BD30140F1E975C5000F54F7E /* RandomPointGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD30140E1E975C5000F54F7E /* RandomPointGenerator.swift */; };
+		BD3014111E97692C00F54F7E /* ItemGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3014101E97692C00F54F7E /* ItemGroup.swift */; };
 		BD6BE3D21E9600D9006EF619 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3D11E9600D9006EF619 /* AppDelegate.swift */; };
 		BD6BE3D81E9600D9006EF619 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3D71E9600D9006EF619 /* GameScene.swift */; };
 		BD6BE3DA1E9600D9006EF619 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3D91E9600D9006EF619 /* GameViewController.swift */; };
@@ -60,6 +64,10 @@
 		BD2E0A401E96B5BD00C54671 /* AnimationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		BD2E0A421E96B63C00C54671 /* HealthComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		BD2E0A441E96B66800C54671 /* ItemTrackerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTrackerComponent.swift; sourceTree = "<group>"; };
+		BD30140A1E9758EB00F54F7E /* ColorGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorGenerator.swift; sourceTree = "<group>"; };
+		BD30140C1E975A1800F54F7E /* EnemyGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyGroup.swift; sourceTree = "<group>"; };
+		BD30140E1E975C5000F54F7E /* RandomPointGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomPointGenerator.swift; sourceTree = "<group>"; };
+		BD3014101E97692C00F54F7E /* ItemGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemGroup.swift; sourceTree = "<group>"; };
 		BD6BE3CE1E9600D9006EF619 /* FantasticFurryDrifters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FantasticFurryDrifters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6BE3D11E9600D9006EF619 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6BE3D71E9600D9006EF619 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -106,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				BD28724A1E9720CD009F9333 /* EntityManager.swift */,
+				BD30140A1E9758EB00F54F7E /* ColorGenerator.swift */,
+				BD30140E1E975C5000F54F7E /* RandomPointGenerator.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -161,6 +171,8 @@
 				BD2742661E965BC80037165E /* Spring.swift */,
 				BD2742681E965BEE0037165E /* Portal.swift */,
 				BD27426A1E965C150037165E /* JetPack.swift */,
+				BD30140C1E975A1800F54F7E /* EnemyGroup.swift */,
+				BD3014101E97692C00F54F7E /* ItemGroup.swift */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -269,6 +281,7 @@
 				BD2742691E965BEE0037165E /* Portal.swift in Sources */,
 				BD6BE3EF1E962761006EF619 /* PhysicsBodyComponent.swift in Sources */,
 				BD2742611E965AE80037165E /* Spikeman.swift in Sources */,
+				BD3014111E97692C00F54F7E /* ItemGroup.swift in Sources */,
 				BD2742571E9648F70037165E /* Constants.swift in Sources */,
 				BD27425F1E965AC20037165E /* EnemyCloud.swift in Sources */,
 				BD28724D1E973D13009F9333 /* GKEnemy.swift in Sources */,
@@ -284,12 +297,15 @@
 				BD6BE3DA1E9600D9006EF619 /* GameViewController.swift in Sources */,
 				BD6BE3F31E9629F1006EF619 /* GKPlayer.swift in Sources */,
 				BD6BE3F11E9627C3006EF619 /* SpriteComponent.swift in Sources */,
+				BD30140F1E975C5000F54F7E /* RandomPointGenerator.swift in Sources */,
 				BD6BE3F71E962F1A006EF619 /* Player.swift in Sources */,
 				BD27426B1E965C150037165E /* JetPack.swift in Sources */,
+				BD30140D1E975A1800F54F7E /* EnemyGroup.swift in Sources */,
 				BD6BE3D21E9600D9006EF619 /* AppDelegate.swift in Sources */,
 				BD2742591E9649720037165E /* SpikeEdge.swift in Sources */,
 				BD27425B1E965A760037165E /* EdgeGroup.swift in Sources */,
 				BD2742631E965B740037165E /* Carrot.swift in Sources */,
+				BD30140B1E9758EB00F54F7E /* ColorGenerator.swift in Sources */,
 				BD2E0A3F1E96B56500C54671 /* ContactComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
