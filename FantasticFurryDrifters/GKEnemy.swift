@@ -9,14 +9,15 @@
 import Foundation
 import CoreMotion
 import GameplayKit
+import SpriteKit
 
 class GKEnemy: GKEntity{
     
-    init(image: UIImage, defaultAction: SKAction, size: CGSize?, position: CGPoint?, motionManager: CMMotionManager? = nil){
+    init(texture: SKTexture, scalingFactor: CGFloat, defaultAction: SKAction, size: CGSize?, position: CGPoint?, motionManager: CMMotionManager? = nil){
         super.init()
         
         //Add GKSpriteComponent
-        addSpriteComponent(image: image)
+        addSpriteComponent(texture: texture, scalingFactor: scalingFactor)
        
         //Add GKTransformComponent 
         addTransformComponent(position: position, size: size)
@@ -26,21 +27,21 @@ class GKEnemy: GKEntity{
         
     }
     
-    private func addSpriteComponent(image: UIImage){
-        let spriteComponent = GKSpriteComponent(texture: SKTexture(image: image))
+    private func addSpriteComponent(texture: SKTexture, scalingFactor: CGFloat){
+        let spriteComponent = GKSpriteComponent(texture: texture)
+        
+        spriteComponent.node.xScale *= scalingFactor
+        spriteComponent.node.yScale *= scalingFactor
+        
         addComponent(spriteComponent)
         
     }
     
     private func addTransformComponent(position: CGPoint?, size: CGSize?){
-        let randomXPos = GKRandomDistribution(lowestValue: -Int(ScreenSizeConstants.HalfScreenWidth), highestValue: Int(ScreenSizeConstants.HalfScreenWidth)).nextInt()
-        let randomYPos = GKRandomDistribution(lowestValue: -Int(ScreenSizeConstants.HalfScreenHeight), highestValue: Int(ScreenSizeConstants.HalfScreenHeight)).nextInt()
-        let randomPoint = CGPoint(x: randomXPos, y: randomYPos)
-        
-        let randomWidth = GKRandomDistribution(lowestValue: 50, highestValue: 100).nextInt()
-        let randomHeight = GKRandomDistribution(lowestValue: 50, highestValue: 100).nextInt()
-        let randomSize = CGSize(width: randomWidth, height: randomHeight)
-        
+       
+        let randomPoint = RandomGenerator.getRandomScreenPoint()
+        let randomSize = RandomGenerator.getRandomBoxSpriteSize(minSide: 100, maxSide: 200)
+
         let enemyPosition = position ?? randomPoint
         let enemySize = size ?? randomSize
         
@@ -53,6 +54,8 @@ class GKEnemy: GKEntity{
     private func addAnimationComponent(defaultAction: SKAction){
         let animationComponent = GKAnimationComponent(defaultAnimation: defaultAction)
         addComponent(animationComponent)
+        animationComponent.runDefaultAnimation()
+
         
     }
     

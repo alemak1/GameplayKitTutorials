@@ -17,6 +17,7 @@ class GKSpriteComponent: GKComponent{
     
     init(texture: SKTexture){
         node = SKSpriteNode(texture: texture)
+        node.anchorPoint = CGPoint(x: 0.00, y: 0.00)
         super.init()
     }
     

@@ -19,13 +19,14 @@ class GameViewController: UIViewController {
         
             // Get the SKScene from the loaded GKScene
             let scene = GameScene(size: self.view.bounds.size)
+            let enemyAgentScene = EnemyAgentScene(size: self.view.bounds.size)
                
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
                 
             // Present the scene
             if let view = self.view as! SKView? {
-                view.presentScene(scene)
+                view.presentScene(enemyAgentScene)
                     
                 view.ignoresSiblingOrder = true
                     

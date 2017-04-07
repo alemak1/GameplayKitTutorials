@@ -45,26 +45,20 @@ class GKMotionResponderComponent: GKComponent{
             let verticalAttitude = -motionData.attitude.pitch
             let horizontalAttitude = motionData.attitude.roll
         
-        
-            print("The verticalAttitude is \(verticalAttitude)")
-            print("The horizontalAttitude is: \(horizontalAttitude)")
-        
             let verticalRotationRate = -motionData.rotationRate.x
             let horizontalRotationRate = motionData.rotationRate.y
         
-            print("The verticalRotationRate is: \(verticalRotationRate)")
-            print("The horizontalRotationRate is: \(horizontalRotationRate)")
-        
+          
             var dxImpulse = 0.00
             var dyImpulse = 0.00
         
         
             if((horizontalAttitude > 0.00 && horizontalRotationRate > 0.00) || (horizontalAttitude < 0.00 && horizontalRotationRate < 0.00)){
-                dxImpulse = horizontalRotationRate
+                dxImpulse = horizontalRotationRate*150
             }
         
             if((verticalAttitude < 0.00 && verticalRotationRate < 0.00) || (verticalAttitude > 0.00 && verticalRotationRate > 0.00)){
-                dyImpulse = verticalRotationRate
+                dyImpulse = verticalRotationRate*150
             }
         
         

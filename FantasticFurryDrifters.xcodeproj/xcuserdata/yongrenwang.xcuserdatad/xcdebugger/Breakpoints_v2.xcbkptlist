@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FantasticFurryDrifters/RandomGenerator.swift"
-            timestampString = "513245663.263537"
+            timestampString = "513253778.311791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "getRandomEdgePointFor(screenEdge:)"
             landmarkType = "7">
          </BreakpointContent>

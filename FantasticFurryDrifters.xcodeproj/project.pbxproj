@@ -43,6 +43,8 @@
 		BD6BE3F31E9629F1006EF619 /* GKPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3F21E9629F1006EF619 /* GKPlayer.swift */; };
 		BD6BE3F51E962C08006EF619 /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3F41E962C08006EF619 /* TransformComponent.swift */; };
 		BD6BE3F71E962F1A006EF619 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3F61E962F1A006EF619 /* Player.swift */; };
+		BD6EFC4D1E97970B006F7CD0 /* EnemyAgentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EFC4C1E97970B006F7CD0 /* EnemyAgentScene.swift */; };
+		BD6EFC4F1E979C3E006F7CD0 /* GKSpikeBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EFC4E1E979C3E006F7CD0 /* GKSpikeBall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		BD6BE3F21E9629F1006EF619 /* GKPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKPlayer.swift; sourceTree = "<group>"; };
 		BD6BE3F41E962C08006EF619 /* TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
 		BD6BE3F61E962F1A006EF619 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		BD6EFC4C1E97970B006F7CD0 /* EnemyAgentScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyAgentScene.swift; sourceTree = "<group>"; };
+		BD6EFC4E1E979C3E006F7CD0 /* GKSpikeBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSpikeBall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 				BD6BE3EA1E962288006EF619 /* Entities */,
 				BD6BE3E91E961EBE006EF619 /* Characters */,
 				BD6BE3D11E9600D9006EF619 /* AppDelegate.swift */,
+				BD6EFC4C1E97970B006F7CD0 /* EnemyAgentScene.swift */,
 				BD6BE3D71E9600D9006EF619 /* GameScene.swift */,
 				BD6BE3D91E9600D9006EF619 /* GameViewController.swift */,
 				BD6BE3DB1E9600D9006EF619 /* Main.storyboard */,
@@ -185,6 +190,7 @@
 			children = (
 				BD6BE3F21E9629F1006EF619 /* GKPlayer.swift */,
 				BD28724C1E973D13009F9333 /* GKEnemy.swift */,
+				BD6EFC4E1E979C3E006F7CD0 /* GKSpikeBall.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -285,6 +291,8 @@
 				BD2742691E965BEE0037165E /* Portal.swift in Sources */,
 				BD6BE3EF1E962761006EF619 /* PhysicsBodyComponent.swift in Sources */,
 				BD2742611E965AE80037165E /* Spikeman.swift in Sources */,
+				BD6EFC4D1E97970B006F7CD0 /* EnemyAgentScene.swift in Sources */,
+				BD6EFC4F1E979C3E006F7CD0 /* GKSpikeBall.swift in Sources */,
 				BD3014111E97692C00F54F7E /* ItemGroup.swift in Sources */,
 				BD2742571E9648F70037165E /* Constants.swift in Sources */,
 				BD27425F1E965AC20037165E /* EnemyCloud.swift in Sources */,

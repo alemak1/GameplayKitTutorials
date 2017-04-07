@@ -35,6 +35,57 @@ class RandomGenerator{
         
     }
     
+    static func getRandomXPos() -> Int{
+        
+        let randomSource = GKLinearCongruentialRandomSource()
+        
+        let minValue = -Int(ScreenSizeConstants.HalfScreenWidth)
+        let maxValue = Int(ScreenSizeConstants.HalfScreenWidth)
+        
+        let randomDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minValue, highestValue: maxValue)
+        
+        return randomDist.nextInt()
+    }
+    
+    static func getRandomYPos() -> Int{
+        let randomSource = GKLinearCongruentialRandomSource()
+        
+        let minValue = -Int(ScreenSizeConstants.HalfScreenHeight)
+        let maxValue = Int(ScreenSizeConstants.HalfScreenHeight)
+        
+        let randomDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minValue, highestValue: maxValue)
+        
+        return randomDist.nextInt()
+    }
+    
+    static func getRandomSpriteWidth(minWidth: Int, maxWidth: Int) -> Int{
+        let randomSource = GKLinearCongruentialRandomSource()
+        let randomDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minWidth, highestValue: maxWidth)
+        
+        return randomDist.nextInt()
+    }
+    
+    static func getRandomSpriteHeight(minHeight: Int, maxHeight: Int) -> Int{
+        let randomSource = GKLinearCongruentialRandomSource()
+        let randomDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minHeight, highestValue: maxHeight)
+        
+        return randomDist.nextInt()
+    }
+    
+    static func getRandomSpriteSize(minWidth: Int, maxWidth: Int, minHeight: Int, maxHeight: Int) -> CGSize{
+        
+        let randomWidth = getRandomSpriteWidth(minWidth: minWidth, maxWidth: maxWidth)
+        let randomHeight = getRandomSpriteHeight(minHeight: minHeight, maxHeight: maxHeight)
+        
+        return CGSize(width: randomWidth, height: randomHeight)
+    }
+    
+    static func getRandomBoxSpriteSize(minSide: Int, maxSide: Int) -> CGSize{
+        let sideLength = getRandomSpriteWidth(minWidth: minSide, maxWidth: maxSide)
+        
+        return CGSize(width: sideLength, height: sideLength)
+    }
+    
     static func getRandomGaussianScalingFactor(meanScalingFactor: Float, scalingFactorDeviation: Float) -> Float{
        
         let randomSource = GKLinearCongruentialRandomSource()

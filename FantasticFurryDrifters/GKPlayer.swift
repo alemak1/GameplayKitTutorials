@@ -13,11 +13,11 @@ import CoreMotion
 
 class GKPlayer: GKEntity{
     
-    init(image: UIImage, motionManager: CMMotionManager, position: CGPoint?, size: CGSize?, physicsBody: SKPhysicsBody? = SKPhysicsBody()){
+    init(image: UIImage, scalingFactor: CGFloat, motionManager: CMMotionManager, position: CGPoint?, size: CGSize?, physicsBody: SKPhysicsBody? = SKPhysicsBody()){
         super.init()
         
         //Add GKSpriteComponent
-        addSpriteComponent(image: image)
+        addSpriteComponent(image: image, scalingFactor: scalingFactor)
      
         //Add GKTransformComponent
         addTransformComponent(position: position, size: size)
@@ -33,8 +33,12 @@ class GKPlayer: GKEntity{
        
     }
     
-    func addSpriteComponent(image: UIImage){
+    func addSpriteComponent(image: UIImage, scalingFactor: CGFloat){
         let spriteComponent = GKSpriteComponent(texture: SKTexture(image: #imageLiteral(resourceName: "SOrabbit")))
+        
+        spriteComponent.node.xScale *= scalingFactor
+        spriteComponent.node.yScale *= scalingFactor
+        
         addComponent(spriteComponent)
     }
     
