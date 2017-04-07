@@ -13,25 +13,29 @@ import SpriteKit
 
 class GKEnemy: GKEntity{
     
-    init(texture: SKTexture, scalingFactor: CGFloat, defaultAction: SKAction, size: CGSize?, position: CGPoint?, motionManager: CMMotionManager? = nil){
+    init(texture: SKTexture, scalingFactor: CGFloat, defaultAction: SKAction, defaultActionName: String, size: CGSize?, position: CGPoint?, motionManager: CMMotionManager? = nil){
         super.init()
         
         //Add GKSpriteComponent
-        addSpriteComponent(texture: texture, scalingFactor: scalingFactor)
+        addSpriteComponent(texture: texture)
        
         //Add GKTransformComponent 
         addTransformComponent(position: position, size: size)
 
         //Add GKAnimationComponent
-        addAnimationComponent(defaultAction: defaultAction)
+        addAnimationComponent(defaultAction: defaultAction, defaultActionName: defaultActionName)
+        
+        
+        //AdjustScaling
+        if let spriteComponent = self.component(ofType: GKSpriteComponent.self){
+            spriteComponent.scaleBy(scalingFactor: scalingFactor)
+        }
         
     }
     
-    private func addSpriteComponent(texture: SKTexture, scalingFactor: CGFloat){
+    private func addSpriteComponent(texture: SKTexture){
         let spriteComponent = GKSpriteComponent(texture: texture)
-        
-        spriteComponent.node.xScale *= scalingFactor
-        spriteComponent.node.yScale *= scalingFactor
+    
         
         addComponent(spriteComponent)
         
@@ -51,8 +55,8 @@ class GKEnemy: GKEntity{
         
     }
     
-    private func addAnimationComponent(defaultAction: SKAction){
-        let animationComponent = GKAnimationComponent(defaultAnimation: defaultAction)
+    private func addAnimationComponent(defaultAction: SKAction, defaultActionName: String){
+        let animationComponent = GKAnimationComponent(defaultAnimation: defaultAction, animationName: defaultActionName)
         addComponent(animationComponent)
         animationComponent.runDefaultAnimation()
 

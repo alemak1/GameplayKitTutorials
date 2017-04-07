@@ -70,6 +70,8 @@ class GKTransformComponent: GKComponent{
         parentPosition = self.defaultPosition
     }
     
+    
+    
     override func update(deltaTime seconds: TimeInterval) {
         
     }

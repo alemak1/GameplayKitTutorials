@@ -27,9 +27,26 @@ class EnemyAgentScene: SKScene{
         entitiesManager.add(player)
         
         
-        let spikeBall = GKSpikeBall(scalingFactor: 0.50, position: nil)
+        let spikeBall = GKSpikeBall(scalingFactor: 0.20, position: nil)
         entitiesManager.add(spikeBall)
         
+        let enemySun = GKEnemySun(scalingFactor: 0.30, position: nil)
+        entitiesManager.add(enemySun)
+        
+        let spikemanLeft1 = GKSpikemanLeft(scalingFactor: 0.20, position: nil, movementLowerBound: -20, movementUpperBound: 50)
+        entitiesManager.add(spikemanLeft1)
+        
+        let spikemanRight1 = GKSpikemanRight(scalingFactor: 0.20, position: nil, movementLowerBound: -100, movementUpperBound: 200)
+        entitiesManager.add(spikemanRight1)
+        
+        let spikemanBottom1 = GKSpikemanBottom(scalingFactor: 0.40, position: nil, movementLowerBound: nil, movementUpperBound: nil)
+        entitiesManager.add(spikemanBottom1)
+        
+        
+        
+        //let randomTopPosition = RandomGenerator.getRandomEdgePointFor(screenEdge: .Top)
+        //let spikemanTop1 = GKSpikemanTop(scalingFactor: 0.40, position: randomTopPosition, movementLowerBound: nil, movementUpperBound: nil)
+       // entitiesManager.add(spikemanTop1)
         
     }
     

@@ -104,28 +104,57 @@ class RandomGenerator{
         let minVertical = -Int(ScreenSizeConstants.HalfScreenHeight)
         let maxVertical = Int(ScreenSizeConstants.HalfScreenHeight)
         
-        let horizontalDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minHorizontal, highestValue: maxHorizontal)
+        let horizontalDist = GKRandomDistribution(randomSource: randomSource, lowestValue: minHorizontal, highestValue: maxHorizontal)
         
-        let verticalDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minVertical, highestValue: maxVertical)
+        let verticalDist = GKRandomDistribution(randomSource: randomSource, lowestValue: minVertical, highestValue: maxVertical)
+        
+
         
         var randomEdgePoint: CGPoint
         
+        let xPos = horizontalDist.nextInt()
+        let yPos = verticalDist.nextInt()
+        
         switch(screenEdge){
         case .Bottom:
-            randomEdgePoint = CGPoint(x: horizontalDist.nextInt(), y: -Int(ScreenSizeConstants.HalfScreenHeight))
+            randomEdgePoint = CGPoint(x: xPos, y: -Int(ScreenSizeConstants.HalfScreenHeight))
             break
         case .Left:
-            randomEdgePoint = CGPoint(x: -Int(ScreenSizeConstants.HalfScreenWidth), y: verticalDist.nextInt())
+            randomEdgePoint = CGPoint(x: -Int(ScreenSizeConstants.HalfScreenWidth), y: yPos)
             break
         case .Right:
-            randomEdgePoint = CGPoint(x: Int(ScreenSizeConstants.HalfScreenWidth), y: verticalDist.nextInt())
+            randomEdgePoint = CGPoint(x: Int(ScreenSizeConstants.HalfScreenWidth), y: yPos)
             break
         case .Top:
-            randomEdgePoint = CGPoint(x: horizontalDist.nextInt(), y: Int(ScreenSizeConstants.HalfScreenHeight))
+            randomEdgePoint = CGPoint(x: xPos, y: Int(ScreenSizeConstants.HalfScreenHeight))
             break
         }
         
         return randomEdgePoint
+        
+    }
+    
+    static func getEdgePointAt(edgePosition: Int, forScreenEdge screenEdge: ScreenEdge) -> CGPoint{
+        
+       
+        var edgePoint: CGPoint
+        
+        switch(screenEdge){
+            case .Bottom:
+                edgePoint = CGPoint(x: edgePosition, y: -Int(ScreenSizeConstants.HalfScreenHeight))
+                break
+            case .Left:
+                edgePoint = CGPoint(x: -Int(ScreenSizeConstants.HalfScreenWidth), y: edgePosition)
+                break
+            case .Right:
+                edgePoint = CGPoint(x: Int(ScreenSizeConstants.HalfScreenWidth), y: edgePosition)
+                break
+            case .Top:
+                edgePoint = CGPoint(x: edgePosition, y: Int(ScreenSizeConstants.HalfScreenHeight))
+                break
+        }
+        
+        return edgePoint
         
     }
     

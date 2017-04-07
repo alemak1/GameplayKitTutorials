@@ -12,6 +12,7 @@ import GameplayKit
 class GKAnimationComponent: GKComponent{
     
     var defaultAnimation: SKAction!
+    var animationName: String!
     
     var parentNode: SKSpriteNode?{
         get{
@@ -34,20 +35,20 @@ class GKAnimationComponent: GKComponent{
     }
     
     
-    init(defaultAnimation: SKAction){
+    init(defaultAnimation: SKAction, animationName: String){
         super.init()
         
         self.defaultAnimation = defaultAnimation
-    
+        self.animationName = animationName
     }
     
     func runDefaultAnimation(){
         let defaultAnimation = SKAction.repeatForever(self.defaultAnimation)
-        parentNode?.run(defaultAnimation, withKey: "defaultAnimation")
+        parentNode?.run(defaultAnimation, withKey: self.animationName)
     }
     
     func removeDefaultAnimation(){
-        parentNode?.removeAction(forKey: "defaultAnimation")
+        parentNode?.removeAction(forKey: self.animationName)
     }
     
 }
