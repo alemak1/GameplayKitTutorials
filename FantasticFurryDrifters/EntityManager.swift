@@ -12,10 +12,32 @@ import SpriteKit
 
 class EntityManager{
     var entities = Set<GKEntity>()
+    var toRemove = Set<GKEntity>()
+    
     let scene: SKScene
+    
+    lazy var componentSystems: [GKComponentSystem] = {
+        let motionResponderSystem = GKComponentSystem(componentClass: GKMotionResponderComponent.self)
+        return [motionResponderSystem]
+    }()
     
     init(scene: SKScene){
         self.scene = scene
+    }
+    
+    
+    func update(_ deltaTime: CFTimeInterval){
+        for componentSystem in componentSystems{
+            componentSystem.update(deltaTime: deltaTime)
+        }
+        
+        for currentRemove in toRemove{
+            for componentSystem in componentSystems{
+                componentSystem.removeComponent(foundIn: currentRemove)
+            }
+        }
+        
+        toRemove.removeAll()
     }
     
     func add(_ entity: GKEntity){
@@ -23,6 +45,10 @@ class EntityManager{
         
         if let spriteNode = entity.component(ofType: GKSpriteComponent.self)?.node{
             scene.addChild(spriteNode)
+        }
+        
+        for componentSystem in componentSystems{
+            componentSystem.addComponent(foundIn: entity)
         }
     }
     
@@ -32,5 +58,28 @@ class EntityManager{
         }
         
         entities.remove(entity)
+        toRemove.insert(entity)
+    }
+    
+    func getGKPlayerEntities() -> [GKPlayer]{
+        return self.entities.flatMap{entity in
+            
+            if let entity = entity as? GKPlayer{
+                return entity
+            }
+            
+            return nil
+        }
+    }
+    
+    func getGKEnemyEntities() -> [GKEnemy]{
+        return self.entities.flatMap{ entity in
+            
+            if let entity = entity as? GKEnemy{
+                return entity
+            }
+        
+            return nil
+        }
     }
 }

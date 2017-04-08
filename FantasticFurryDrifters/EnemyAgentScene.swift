@@ -16,14 +16,13 @@ class EnemyAgentScene: SKScene{
     var lastUpdateTime: TimeInterval = 0.00
     
     var entitiesManager: EntityManager!
-    var player: GKPlayer!
     var motionManager: CMMotionManager = CMMotionManager()
     
     override func didMove(to view: SKView) {
         entitiesManager = EntityManager(scene: self)
         
         let initialPos = CGPoint.zero
-        player = GKPlayer(image: #imageLiteral(resourceName: "SOrabbit"), scalingFactor: 0.40, motionManager: self.motionManager, position: nil, size: nil)
+        let player = GKPlayer(image: #imageLiteral(resourceName: "SOrabbit"), scalingFactor: 0.40, motionManager: self.motionManager, position: nil, size: nil)
         entitiesManager.add(player)
         
         
@@ -69,10 +68,9 @@ class EnemyAgentScene: SKScene{
         }
         
         let dt = currentTime - lastUpdateTime
-        
-        player.component(ofType: GKMotionResponderComponent.self)?.update(deltaTime: dt)
-        
         lastUpdateTime = currentTime
+        
+        entitiesManager.update(dt)
     }
     
     override func didSimulatePhysics() {

@@ -26,6 +26,8 @@
 		BD2E01D51E97CE2700AE0004 /* GKSpikemanTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01D41E97CE2700AE0004 /* GKSpikemanTop.swift */; };
 		BD2E01D71E97D1E100AE0004 /* GKSpikemanBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01D61E97D1E100AE0004 /* GKSpikemanBottom.swift */; };
 		BD2E01D91E97D34A00AE0004 /* GKEnemySun.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01D81E97D34A00AE0004 /* GKEnemySun.swift */; };
+		BD2E01DB1E986F0600AE0004 /* GKCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01DA1E986F0600AE0004 /* GKCameraComponent.swift */; };
+		BD2E01DD1E98752800AE0004 /* GKUserInterfaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01DC1E98752800AE0004 /* GKUserInterfaceManager.swift */; };
 		BD2E0A3D1E96B54900C54671 /* ColliderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E0A3C1E96B54900C54671 /* ColliderComponent.swift */; };
 		BD2E0A3F1E96B56500C54671 /* ContactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E0A3E1E96B56500C54671 /* ContactComponent.swift */; };
 		BD2E0A411E96B5BD00C54671 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E0A401E96B5BD00C54671 /* AnimationComponent.swift */; };
@@ -72,6 +74,8 @@
 		BD2E01D41E97CE2700AE0004 /* GKSpikemanTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSpikemanTop.swift; sourceTree = "<group>"; };
 		BD2E01D61E97D1E100AE0004 /* GKSpikemanBottom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSpikemanBottom.swift; sourceTree = "<group>"; };
 		BD2E01D81E97D34A00AE0004 /* GKEnemySun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKEnemySun.swift; sourceTree = "<group>"; };
+		BD2E01DA1E986F0600AE0004 /* GKCameraComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKCameraComponent.swift; sourceTree = "<group>"; };
+		BD2E01DC1E98752800AE0004 /* GKUserInterfaceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKUserInterfaceManager.swift; sourceTree = "<group>"; };
 		BD2E0A3C1E96B54900C54671 /* ColliderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColliderComponent.swift; sourceTree = "<group>"; };
 		BD2E0A3E1E96B56500C54671 /* ContactComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactComponent.swift; sourceTree = "<group>"; };
 		BD2E0A401E96B5BD00C54671 /* AnimationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				BD2E01D41E97CE2700AE0004 /* GKSpikemanTop.swift */,
 				BD2E01D61E97D1E100AE0004 /* GKSpikemanBottom.swift */,
 				BD2E01D81E97D34A00AE0004 /* GKEnemySun.swift */,
+				BD2E01DC1E98752800AE0004 /* GKUserInterfaceManager.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				BD2E0A401E96B5BD00C54671 /* AnimationComponent.swift */,
 				BD2E0A421E96B63C00C54671 /* HealthComponent.swift */,
 				BD2E0A441E96B66800C54671 /* ItemTrackerComponent.swift */,
+				BD2E01DA1E986F0600AE0004 /* GKCameraComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				BD2742611E965AE80037165E /* Spikeman.swift in Sources */,
 				BD6EFC4D1E97970B006F7CD0 /* EnemyAgentScene.swift in Sources */,
 				BD6EFC4F1E979C3E006F7CD0 /* GKSpikeBall.swift in Sources */,
+				BD2E01DD1E98752800AE0004 /* GKUserInterfaceManager.swift in Sources */,
 				BD2E01D31E97CB9500AE0004 /* GKSpikemanRight.swift in Sources */,
 				BD3014111E97692C00F54F7E /* ItemGroup.swift in Sources */,
 				BD2742571E9648F70037165E /* Constants.swift in Sources */,
@@ -324,6 +331,7 @@
 				BD6BE3D81E9600D9006EF619 /* GameScene.swift in Sources */,
 				BD6BE3DA1E9600D9006EF619 /* GameViewController.swift in Sources */,
 				BD2E01D91E97D34A00AE0004 /* GKEnemySun.swift in Sources */,
+				BD2E01DB1E986F0600AE0004 /* GKCameraComponent.swift in Sources */,
 				BD2E01D51E97CE2700AE0004 /* GKSpikemanTop.swift in Sources */,
 				BD6BE3F31E9629F1006EF619 /* GKPlayer.swift in Sources */,
 				BD6BE3F11E9627C3006EF619 /* SpriteComponent.swift in Sources */,
