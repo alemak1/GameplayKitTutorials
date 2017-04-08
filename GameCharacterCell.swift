@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/**
 class GameCharacterHeader: UICollectionReusableView{
     
      private var imageView: UIImageView?
@@ -51,6 +52,8 @@ class GameCharacterHeader: UICollectionReusableView{
     }
     
 }
+ 
+ **/
 
 class GameCharacterFooter: UICollectionReusableView{
     
@@ -59,15 +62,56 @@ class GameCharacterFooter: UICollectionReusableView{
 
 class GameCharacterCell: UICollectionViewCell{
     
-    var titleLabel: UILabel?
-    var imageView: UIImageView?
+    private var titleLabel: UILabel?
+    private var imageView: UIImageView?
     
     var gameCharacter: GameCharacter?
     
+    var characterTitle: String?{
+        set(newTItle){
+            if let charTitle = newTItle{
+                titleLabel?.text = charTitle
+            }
+        }
+        
+        get{
+            return titleLabel?.text
+        }
+    }
+    
+    var characterImage: UIImage?{
+        set(newImage){
+            if let charImg = newImage{
+                imageView?.image = charImg
+            }
+        }
+        
+        get{
+            return imageView?.image
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configureContentView()
 
+    }
+    
+    
+    convenience init(gameCharacter: GameCharacter, frame: CGRect) {
+        self.init(frame: frame)
+        self.gameCharacter = gameCharacter
+    }
+    
+    
+ 
+    
+    private func configureContentView(){
         let backgroundImageView = UIImageView(frame: frame)
         backgroundImageView.image = #imageLiteral(resourceName: "red_button06")
         backgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -83,33 +127,28 @@ class GameCharacterCell: UICollectionViewCell{
         
         let imageViewFrame = CGRect(x: backgroundImageView.frame.width*0.10, y: backgroundImageView.frame.height*0.20, width: backgroundImageView.frame.width*0.80, height: backgroundImageView.frame.height*0.50)
         imageView = UIImageView(frame: imageViewFrame)
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
         let labelFrameWidth = imageViewFrame.width*0.90
         let labelFrameHeight = imageViewFrame.height*0.90
-      //  let labelFrameXPos = imageViewFrame.height*0.05
-       // let labelFrameYPos = imageViewFrame.height*0.90
-    
+        //  let labelFrameXPos = imageViewFrame.height*0.05
+        // let labelFrameYPos = imageViewFrame.height*0.90
+        
         let labelFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         titleLabel = UILabel(frame: labelFrame)
-        titleLabel.font = UIFont(name: FontNames.NoteworthyBold, size: 10.0)
-        titleLabel.textAlignment = .center
-        titleLabel.textColor = ColorGenerator.getColor(colorType: .RedCollectionCellFontColor)
-    
-        imageView.addSubview(titleLabel)
-        contentView.addSubview(imageView)
         
-    }
-    
-    convenience init(gameCharacter: GameCharacter, frame: CGRect) {
-        self.init(frame: frame)
-        self.gameCharacter = gameCharacter
-    }
-    
-    
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        titleLabel?.font = UIFont(name: FontNames.NoteworthyBold, size: 10.0)
+        titleLabel?.textAlignment = .center
+        titleLabel?.textColor = ColorGenerator.getColor(colorType: .RedCollectionCellFontColor)
+        
+
+        if(imageView != nil){
+            if(titleLabel != nil){
+                imageView!.addSubview(titleLabel!)
+            }
+            contentView.addSubview(imageView!)
+        }
+  
+        
     }
 }

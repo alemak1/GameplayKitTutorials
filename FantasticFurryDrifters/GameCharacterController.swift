@@ -31,9 +31,12 @@ class GameCharacterController: UIViewController, UICollectionViewDelegateFlowLay
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        
         collectionView.register(GameCharacterCell.self, forCellWithReuseIdentifier: "GameCharacterCell")
+        /**
         collectionView.register(GameCharacterHeader.self, forSupplementaryViewOfKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader")
         collectionView.register(GameCharacterFooter.self, forSupplementaryViewOfKind: "GameCharacterFooter", withReuseIdentifier: "GameCharacterFooter")
+        **/
         
         collectionView.backgroundColor = ColorGenerator.getColor(colorType: .SkyBlue)
         view.addSubview(collectionView)
@@ -46,19 +49,19 @@ class GameCharacterController: UIViewController, UICollectionViewDelegateFlowLay
 extension GameCharacterController{
      func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        return CharacterProfileSet.profilesArray.count
+        return GameCharacter.profilesArray.count
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return CharacterProfileSet.profilesArray[section].count
+        return GameCharacter.profilesArray[section].count
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCharacterCell", for: indexPath) as! GameCharacterCell
         
-        let characterProfile = characterProfileForIndexPath(indexPath: indexPath)
+        let gameCharacter = gameCharacterForIndexPath(indexPath: indexPath)
         
         var backgroundImageView = UIImageView(frame: cell.frame)
         backgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -90,8 +93,9 @@ extension GameCharacterController{
         cell.backgroundView = backgroundImageView
         cell.selectedBackgroundView = selectedBackgroundImageView
         
-        cell.imageView.image = characterProfile.image
-        cell.titleLabel.text = characterProfile.title
+        cell.characterImage = gameCharacter.image
+        cell.characterTitle = gameCharacter.title
+        cell.gameCharacter = gameCharacter
         
         let cellTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameCharacterController.presentCharacterProfileVC(sender:)))
         
@@ -124,6 +128,8 @@ extension GameCharacterController{
    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+        return UICollectionReusableView()
+        /**
         var supplementaryView: UICollectionReusableView = UICollectionReusableView()
     
         switch(indexPath.section){
@@ -166,7 +172,8 @@ extension GameCharacterController{
         }
         
         return supplementaryView
-       
+        **/
+        
         /**
         switch(kind){
         case "GameCharacterHeader":
@@ -216,8 +223,11 @@ private extension GameCharacterController{
         
         let point = sender.location(in: collectionView)
         
-        if let cell = sender.view as? GameCharacterCell{
-            //load character profile controllers here
+        if let cell = sender.view as? GameCharacterCell, let gameCharacter = cell.gameCharacter{
+            
+            let charProfileVC = CharacterProfileVC(gameCharacter: gameCharacter)
+            present(charProfileVC, animated: true, completion: nil)
+          
         }
         
     }
@@ -225,8 +235,8 @@ private extension GameCharacterController{
 
 private extension GameCharacterController{
     
-    func characterProfileForIndexPath(indexPath: IndexPath) -> CharacterProfile{
-        return CharacterProfileSet.profilesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+    func gameCharacterForIndexPath(indexPath: IndexPath) -> GameCharacter{
+        return GameCharacter.profilesArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
     }
     
 }
