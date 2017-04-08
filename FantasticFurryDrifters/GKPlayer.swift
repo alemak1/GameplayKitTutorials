@@ -13,7 +13,9 @@ import CoreMotion
 
 class GKPlayer: GKEntity{
     
-    init(image: UIImage, scalingFactor: CGFloat, motionManager: CMMotionManager, position: CGPoint?, size: CGSize?, physicsBody: SKPhysicsBody? = SKPhysicsBody()){
+    private var isUserPlayer: Bool = true
+    
+    init(image: UIImage, scalingFactor: CGFloat, motionManager: CMMotionManager, position: CGPoint?, size: CGSize?, physicsBody: SKPhysicsBody? = SKPhysicsBody(), isUserPlayer: Bool = true){
         super.init()
         
         //Add GKSpriteComponent
@@ -28,9 +30,15 @@ class GKPlayer: GKEntity{
         //Add GKMotionResponderComponent
         addMotionResponderComponent(motionManager: motionManager)
         
+        //Set the GKPlayer as the userPlayer (for multiplayer games, non-user players may be present in the scene)
+        self.isUserPlayer = isUserPlayer
 
         
        
+    }
+    
+    func playerIsCurrentUser() -> Bool{
+        return self.isUserPlayer
     }
     
     func addSpriteComponent(image: UIImage, scalingFactor: CGFloat){

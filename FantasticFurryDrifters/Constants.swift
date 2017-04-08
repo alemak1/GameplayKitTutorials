@@ -24,3 +24,9 @@ class ScreenPoints{
     static let BottomLeftCorner = CGPoint(x: -Int(ScreenSizeConstants.HalfScreenWidth), y: -Int(ScreenSizeConstants.HalfScreenHeight))
     static let BottomRightCorner = CGPoint(x: Int(ScreenSizeConstants.HalfScreenWidth), y: -Int(ScreenSizeConstants.HalfScreenHeight))
 }
+
+class FontNames{
+    static let Noteworthy = "Noteworthy"
+    static let NoteworthyBold = "Noteworthy-Bold"
+    static let NoteworthLight = "Noteworthy-Light"
+}

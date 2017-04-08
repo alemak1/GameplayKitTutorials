@@ -16,6 +16,14 @@ class GKUserInterfaceManager: GKEntity{
     
     weak var scene: EnemyAgentScene?
     
+    var pinchGestureRecognier: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(GKCameraComponent.adjustCameraZoomLevel(sender:)))
+    
+
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     init(managedScene: EnemyAgentScene, enableCamera: Bool){
 
         self.scene = managedScene
@@ -23,17 +31,26 @@ class GKUserInterfaceManager: GKEntity{
         super.init()
 
         if(enableCamera){
-            addCameraComponent()
+           addCameraComponent()
+            scene?.view?.addGestureRecognizer(pinchGestureRecognier)
         }
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
+
+}
+
+extension GKUserInterfaceManager{
     
     func addCameraComponent(){
         let cameraComponent = GKCameraComponent(userInteractionEnabled: true)
         addComponent(cameraComponent)
+
+        
+        guard let playerNode = self.scene?.entitiesManager.getCurrentUserPlayer()?.component(ofType: GKSpriteComponent.self)?.node else { return }
+        
+        self.scene?.camera = cameraComponent.cameraNode
+        cameraComponent.resetNodeOfFocus(toNodeOfCameraFocus: playerNode)
     }
 }

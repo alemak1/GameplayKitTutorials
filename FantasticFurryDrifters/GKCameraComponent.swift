@@ -12,15 +12,12 @@ import SpriteKit
 
 class GKCameraComponent: GKComponent{
     
-    var node: SKCameraNode
-    var pinchGestureRecognier: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(GKCameraComponent.adjustCameraZoomLevel(sender:)))
-    
+    var cameraNode: SKCameraNode = SKCameraNode()
+    var nodeOfFocus: SKSpriteNode?
+
     init(userInteractionEnabled: Bool = true) {
-        
-        node = SKCameraNode()
-        node.isUserInteractionEnabled = userInteractionEnabled
-        
         super.init()
+        cameraNode.isUserInteractionEnabled = userInteractionEnabled
 
         
     }
@@ -29,27 +26,35 @@ class GKCameraComponent: GKComponent{
         fatalError("init(coder:) has not been implemented")
     }
     
+    func resetNodeOfFocus(toNodeOfCameraFocus nodeOfCameraFocus: SKSpriteNode){
+        nodeOfFocus = nodeOfCameraFocus
+        alignCameraWithNodeOfFocus()
+
+    }
     
-    func setInitialPositionOfCamera(){
-        if let parentEntitySpriteNode = self.entity?.component(ofType: GKSpriteComponent.self)?.node{
-            node.position = parentEntitySpriteNode.position
-        }
+    func alignCameraWithNodeOfFocus(){
+        
+        guard let nodeOfFocus = nodeOfFocus else { return }
+        
+        cameraNode.position = nodeOfFocus.position
     }
     
    
     override func update(deltaTime seconds: TimeInterval) {
-      
+        alignCameraWithNodeOfFocus()
     }
     
     
     func adjustCameraZoomLevel(sender: UIPinchGestureRecognizer){
+        
+        guard let nodeOfFocus = nodeOfFocus else { return }
+        
         if(sender.state == .began || sender.state == .changed){
-            if let parentSpriteNode = self.entity?.component(ofType: GKSpriteComponent.self)?.node{
-                
-                let scaleFactor = sender.scale
-                parentSpriteNode.xScale *= scaleFactor
-                parentSpriteNode.yScale *= scaleFactor
-            }
+          
+            let scaleFactor = sender.scale
+            nodeOfFocus.xScale *= scaleFactor
+            nodeOfFocus.yScale *= scaleFactor
+            
         }
     }
 }

@@ -18,13 +18,53 @@ class EnemyAgentScene: SKScene{
     var entitiesManager: EntityManager!
     var motionManager: CMMotionManager = CMMotionManager()
     
+    
+    //Add game characters (players, enemies, items, etc.) to the world
+    var world: SKNode?
+    
+    //Add UI elements to the overlay
+    var overlay: SKNode?
+    
+    
+    lazy var pinchRecognizer: UIPinchGestureRecognizer = {
+        
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(EnemyAgentScene.adjustCameraScale(sender:)))
+        
+        return pinchRecognizer
+    }()
+    
+ 
+    
     override func didMove(to view: SKView) {
+        
+        //Add pinch gesture recognizer for expanding and contracting view
+        self.view?.addGestureRecognizer(pinchRecognizer)
+        
+        world = SKNode()
+        world?.zPosition = 15
+        world?.name = "world"
+        self.addChild(world!)
+
+        self.camera = SKCameraNode()
+        self.camera?.isUserInteractionEnabled = true
+        
+        overlay = SKNode()
+        overlay?.zPosition = 30
+        overlay?.name = "overlay"
+        self.addChild(overlay!)
+        
+        
+        
+        
         entitiesManager = EntityManager(scene: self)
         
         let initialPos = CGPoint.zero
         let player = GKPlayer(image: #imageLiteral(resourceName: "SOrabbit"), scalingFactor: 0.40, motionManager: self.motionManager, position: nil, size: nil)
         entitiesManager.add(player)
         
+       //let userInterfaceManager = GKUserInterfaceManager(managedScene: self, enableCamera: true)
+        //entitiesManager.add(userInterfaceManager)
+    
         
         let spikeBall = GKSpikeBall(scalingFactor: 0.20, position: nil)
         entitiesManager.add(spikeBall)
@@ -59,6 +99,23 @@ class EnemyAgentScene: SKScene{
         
     }
     
+    func adjustCameraScale(sender: UIPinchGestureRecognizer){
+        
+        if(sender.state == .began || sender.state == .changed){
+            
+            let scaleFactor = sender.scale
+            let pinchVelocity = sender.velocity
+            
+            print(pinchVelocity)
+            
+            if(pinchVelocity < 0.001 && pinchVelocity > -0.001){
+                self.camera?.xScale *= scaleFactor*0.40
+                self.camera?.yScale *= scaleFactor*0.40
+            }
+            
+        }
+    }
+    
     //MARK: ********* Game Loop functions
     
     override func update(_ currentTime: TimeInterval) {
@@ -74,12 +131,13 @@ class EnemyAgentScene: SKScene{
     }
     
     override func didSimulatePhysics() {
-        
     }
     
     override func didEvaluateActions() {
         
     }
+    
+   
     
     //MARK: ********* User Touch Handlers 
     

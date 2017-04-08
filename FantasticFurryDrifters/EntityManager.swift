@@ -14,14 +14,14 @@ class EntityManager{
     var entities = Set<GKEntity>()
     var toRemove = Set<GKEntity>()
     
-    let scene: SKScene
+    let scene: EnemyAgentScene
     
     lazy var componentSystems: [GKComponentSystem] = {
         let motionResponderSystem = GKComponentSystem(componentClass: GKMotionResponderComponent.self)
         return [motionResponderSystem]
     }()
     
-    init(scene: SKScene){
+    init(scene: EnemyAgentScene){
         self.scene = scene
     }
     
@@ -44,7 +44,7 @@ class EntityManager{
         entities.insert(entity)
         
         if let spriteNode = entity.component(ofType: GKSpriteComponent.self)?.node{
-            scene.addChild(spriteNode)
+            scene.world?.addChild(spriteNode)
         }
         
         for componentSystem in componentSystems{
@@ -70,6 +70,19 @@ class EntityManager{
             
             return nil
         }
+    }
+    
+    func getCurrentUserPlayer() -> GKPlayer?{
+        
+        let players = getGKPlayerEntities()
+        
+        for player in players{
+            if player.playerIsCurrentUser(){
+                return player
+            }
+        }
+        
+        return nil
     }
     
     func getGKEnemyEntities() -> [GKEnemy]{
