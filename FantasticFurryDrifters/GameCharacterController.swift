@@ -18,9 +18,11 @@ class GameCharacterController: UIViewController, UICollectionViewDelegateFlowLay
     
     var collectionView: UICollectionView!
     
+  
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
+    
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10.00, left: 30.0, bottom: 20.00, right: 30.0)
         layout.itemSize = CGSize(width: 90, height: 120)
@@ -28,7 +30,11 @@ class GameCharacterController: UIViewController, UICollectionViewDelegateFlowLay
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-          collectionView.register(GameCharacterCell.self, forCellWithReuseIdentifier: "GameCharacterCell")
+        
+        collectionView.register(GameCharacterCell.self, forCellWithReuseIdentifier: "GameCharacterCell")
+        collectionView.register(GameCharacterHeader.self, forSupplementaryViewOfKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader")
+        collectionView.register(GameCharacterFooter.self, forSupplementaryViewOfKind: "GameCharacterFooter", withReuseIdentifier: "GameCharacterFooter")
+        
         collectionView.backgroundColor = ColorGenerator.getColor(colorType: .SkyBlue)
         view.addSubview(collectionView)
         
@@ -54,8 +60,42 @@ extension GameCharacterController{
         
         let characterProfile = characterProfileForIndexPath(indexPath: indexPath)
         
+        var backgroundImageView = UIImageView(frame: cell.frame)
+        backgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
+
+        var selectedBackgroundImageView = UIImageView(frame: cell.frame)
+        selectedBackgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
+
+        switch(indexPath.section){
+            case 0:
+                backgroundImageView.image = #imageLiteral(resourceName: "red_button06")
+                selectedBackgroundImageView.image = #imageLiteral(resourceName: "red_button07")
+                break
+            case 1:
+                backgroundImageView.image = #imageLiteral(resourceName: "green_button09")
+                selectedBackgroundImageView.image = #imageLiteral(resourceName: "green_button10")
+                break
+            case 2:
+                backgroundImageView.image = #imageLiteral(resourceName: "yellow_button09")
+                selectedBackgroundImageView.image = #imageLiteral(resourceName: "yellow_button10")
+                break
+            default:
+                backgroundImageView.image = #imageLiteral(resourceName: "red_button06")
+                selectedBackgroundImageView.image = #imageLiteral(resourceName: "red_button07")
+                break
+            
+            
+        }
+        
+        cell.backgroundView = backgroundImageView
+        cell.selectedBackgroundView = selectedBackgroundImageView
+        
         cell.imageView.image = characterProfile.image
         cell.titleLabel.text = characterProfile.title
+        
+        let cellTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameCharacterController.presentCharacterProfileVC(sender:)))
+        
+        cell.addGestureRecognizer(cellTapGestureRecognizer)
         
         return cell
         
@@ -77,11 +117,76 @@ extension GameCharacterController{
         
     }
     
-    
 }
 
 extension GameCharacterController{
-  
+    
+   
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        var supplementaryView: UICollectionReusableView = UICollectionReusableView()
+    
+        switch(indexPath.section){
+            case 0:
+                if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader", for: indexPath) as? GameCharacterHeader{
+                    
+                    supplementaryView.titleText = "Enemies"
+                    supplementaryView.backgroundImage = #imageLiteral(resourceName: "yellow_button13")
+                }
+                
+                break
+            case 1:
+                if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader", for: indexPath) as? GameCharacterHeader{
+                    
+                    supplementaryView.titleText = "Items"
+                    supplementaryView.backgroundImage = #imageLiteral(resourceName: "yellow_button13")
+                }
+                break
+            case 2:
+                if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader", for: indexPath) as? GameCharacterHeader{
+                    
+                    supplementaryView.titleText = "Carrots"
+                    supplementaryView.backgroundImage = #imageLiteral(resourceName: "yellow_button13")
+                }
+                break
+            case 3:
+                if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader", for: indexPath) as? GameCharacterHeader{
+                    
+                    supplementaryView.titleText = "Coins"
+                    supplementaryView.backgroundImage = #imageLiteral(resourceName: "yellow_button13")
+                }
+                break
+            default:
+                if let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader", for: indexPath) as? GameCharacterHeader{
+                    
+                    supplementaryView.titleText = "Game Objects"
+                    supplementaryView.backgroundImage = #imageLiteral(resourceName: "yellow_button13")
+                }
+                break
+        }
+        
+        return supplementaryView
+       
+        /**
+        switch(kind){
+        case "GameCharacterHeader":
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterHeader", withReuseIdentifier: "GameCharacterHeader", for: indexPath) as! GameCharacterHeader
+            
+            return headerView
+            
+            break
+        case "GameCharacterFooter":
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: "GameCharacterFooter", withReuseIdentifier: "GameCharacterFooter", for: indexPath) as! GameCharacterFooter
+            
+            return footerView
+            break
+        default:
+            break
+        }
+        **/
+        
+    }
+
     /**
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1.00
@@ -105,6 +210,18 @@ extension GameCharacterController{
      **/
 }
 
+private extension GameCharacterController{
+    
+    @objc func presentCharacterProfileVC(sender: UITapGestureRecognizer){
+        
+        let point = sender.location(in: collectionView)
+        
+        if let cell = sender.view as? GameCharacterCell{
+            //load character profile controllers here
+        }
+        
+    }
+}
 
 private extension GameCharacterController{
     

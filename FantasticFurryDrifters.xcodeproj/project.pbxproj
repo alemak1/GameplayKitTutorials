@@ -23,7 +23,6 @@
 		BD28724D1E973D13009F9333 /* GKEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28724C1E973D13009F9333 /* GKEnemy.swift */; };
 		BD28BD901E98ABB30017B393 /* GameCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28BD8F1E98ABB30017B393 /* GameCharacterController.swift */; };
 		BD28BD921E98B2000017B393 /* GameCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28BD911E98B2000017B393 /* GameCharacterCell.swift */; };
-		BD28BD941E98C4DF0017B393 /* CharacterProfileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28BD931E98C4DF0017B393 /* CharacterProfileSet.swift */; };
 		BD2E01D11E97C11700AE0004 /* GKSpikemanLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01D01E97C11700AE0004 /* GKSpikemanLeft.swift */; };
 		BD2E01D31E97CB9500AE0004 /* GKSpikemanRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01D21E97CB9500AE0004 /* GKSpikemanRight.swift */; };
 		BD2E01D51E97CE2700AE0004 /* GKSpikemanTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2E01D41E97CE2700AE0004 /* GKSpikemanTop.swift */; };
@@ -41,6 +40,10 @@
 		BD30140F1E975C5000F54F7E /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD30140E1E975C5000F54F7E /* RandomGenerator.swift */; };
 		BD3014111E97692C00F54F7E /* ItemGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3014101E97692C00F54F7E /* ItemGroup.swift */; };
 		BD3014131E976EDE00F54F7E /* CharacterDescriptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = BD3014121E976EDE00F54F7E /* CharacterDescriptions.plist */; };
+		BD35F2561E98F0A700487DDF /* GameCharacterCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD35F2551E98F0A700487DDF /* GameCharacterCollectionLayout.swift */; };
+		BD35F2581E990D5B00487DDF /* CharacterProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD35F2571E990D5B00487DDF /* CharacterProfileVC.swift */; };
+		BD35F25A1E990DEC00487DDF /* CharacterProfileScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD35F2591E990DEC00487DDF /* CharacterProfileScene.swift */; };
+		BD35F25C1E990F3500487DDF /* GameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD35F25B1E990F3500487DDF /* GameCharacter.swift */; };
 		BD6BE3D21E9600D9006EF619 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3D11E9600D9006EF619 /* AppDelegate.swift */; };
 		BD6BE3D81E9600D9006EF619 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3D71E9600D9006EF619 /* GameScene.swift */; };
 		BD6BE3DA1E9600D9006EF619 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BE3D91E9600D9006EF619 /* GameViewController.swift */; };
@@ -74,7 +77,6 @@
 		BD28724C1E973D13009F9333 /* GKEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKEnemy.swift; sourceTree = "<group>"; };
 		BD28BD8F1E98ABB30017B393 /* GameCharacterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCharacterController.swift; sourceTree = "<group>"; };
 		BD28BD911E98B2000017B393 /* GameCharacterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameCharacterCell.swift; path = ../GameCharacterCell.swift; sourceTree = "<group>"; };
-		BD28BD931E98C4DF0017B393 /* CharacterProfileSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProfileSet.swift; sourceTree = "<group>"; };
 		BD2E01D01E97C11700AE0004 /* GKSpikemanLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSpikemanLeft.swift; sourceTree = "<group>"; };
 		BD2E01D21E97CB9500AE0004 /* GKSpikemanRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSpikemanRight.swift; sourceTree = "<group>"; };
 		BD2E01D41E97CE2700AE0004 /* GKSpikemanTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSpikemanTop.swift; sourceTree = "<group>"; };
@@ -92,6 +94,10 @@
 		BD30140E1E975C5000F54F7E /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 		BD3014101E97692C00F54F7E /* ItemGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemGroup.swift; sourceTree = "<group>"; };
 		BD3014121E976EDE00F54F7E /* CharacterDescriptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharacterDescriptions.plist; sourceTree = "<group>"; };
+		BD35F2551E98F0A700487DDF /* GameCharacterCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCharacterCollectionLayout.swift; sourceTree = "<group>"; };
+		BD35F2571E990D5B00487DDF /* CharacterProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProfileVC.swift; sourceTree = "<group>"; };
+		BD35F2591E990DEC00487DDF /* CharacterProfileScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterProfileScene.swift; sourceTree = "<group>"; };
+		BD35F25B1E990F3500487DDF /* GameCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCharacter.swift; sourceTree = "<group>"; };
 		BD6BE3CE1E9600D9006EF619 /* FantasticFurryDrifters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FantasticFurryDrifters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6BE3D11E9600D9006EF619 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6BE3D71E9600D9006EF619 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -149,9 +155,12 @@
 		BD28BD951E98C4F30017B393 /* GameCharacterController */ = {
 			isa = PBXGroup;
 			children = (
-				BD28BD931E98C4DF0017B393 /* CharacterProfileSet.swift */,
 				BD28BD911E98B2000017B393 /* GameCharacterCell.swift */,
 				BD28BD8F1E98ABB30017B393 /* GameCharacterController.swift */,
+				BD35F2551E98F0A700487DDF /* GameCharacterCollectionLayout.swift */,
+				BD35F2571E990D5B00487DDF /* CharacterProfileVC.swift */,
+				BD35F2591E990DEC00487DDF /* CharacterProfileScene.swift */,
+				BD35F25B1E990F3500487DDF /* GameCharacter.swift */,
 			);
 			name = GameCharacterController;
 			sourceTree = "<group>";
@@ -343,6 +352,8 @@
 				BD2742671E965BC80037165E /* Spring.swift in Sources */,
 				BD2E0A3D1E96B54900C54671 /* ColliderComponent.swift in Sources */,
 				BD6BE3F51E962C08006EF619 /* TransformComponent.swift in Sources */,
+				BD35F25A1E990DEC00487DDF /* CharacterProfileScene.swift in Sources */,
+				BD35F25C1E990F3500487DDF /* GameCharacter.swift in Sources */,
 				BD2742541E9646110037165E /* Spikeball.swift in Sources */,
 				BD2E0A431E96B63C00C54671 /* HealthComponent.swift in Sources */,
 				BD6BE3D81E9600D9006EF619 /* GameScene.swift in Sources */,
@@ -351,15 +362,16 @@
 				BD2E01DB1E986F0600AE0004 /* GKCameraComponent.swift in Sources */,
 				BD2E01D51E97CE2700AE0004 /* GKSpikemanTop.swift in Sources */,
 				BD6BE3F31E9629F1006EF619 /* GKPlayer.swift in Sources */,
+				BD35F2581E990D5B00487DDF /* CharacterProfileVC.swift in Sources */,
 				BD28BD901E98ABB30017B393 /* GameCharacterController.swift in Sources */,
 				BD6BE3F11E9627C3006EF619 /* SpriteComponent.swift in Sources */,
 				BD30140F1E975C5000F54F7E /* RandomGenerator.swift in Sources */,
 				BD6BE3F71E962F1A006EF619 /* Player.swift in Sources */,
 				BD27426B1E965C150037165E /* JetPack.swift in Sources */,
 				BD30140D1E975A1800F54F7E /* EnemyGroup.swift in Sources */,
-				BD28BD941E98C4DF0017B393 /* CharacterProfileSet.swift in Sources */,
 				BD6BE3D21E9600D9006EF619 /* AppDelegate.swift in Sources */,
 				BD2742591E9649720037165E /* SpikeEdge.swift in Sources */,
+				BD35F2561E98F0A700487DDF /* GameCharacterCollectionLayout.swift in Sources */,
 				BD27425B1E965A760037165E /* EdgeGroup.swift in Sources */,
 				BD2742631E965B740037165E /* Carrot.swift in Sources */,
 				BD2E01D71E97D1E100AE0004 /* GKSpikemanBottom.swift in Sources */,

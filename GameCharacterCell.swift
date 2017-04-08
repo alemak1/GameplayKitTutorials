@@ -9,15 +9,65 @@
 import Foundation
 import UIKit
 
-class GameCharacterCell: UICollectionViewCell{
+class GameCharacterHeader: UICollectionReusableView{
     
-    var titleLabel: UILabel!
-    var imageView: UIImageView!
+     private var imageView: UIImageView?
+     private var headerTitle: UILabel?
+    
+
+    var backgroundImage: UIImage?{
+        
+        set(newImage){
+            imageView?.image = newImage
+        }
+        
+        get{
+            return imageView?.image
+        }
+    }
+    
+    var titleText: String?{
+        set(newTitleText){
+            headerTitle?.text = newTitleText
+        }
+        
+        get{
+            return headerTitle.text
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        imageView = UIImageView(image: #imageLiteral(resourceName: "green_button13"))
+        headerTitle = UILabel(frame: imageView.bounds)
+        imageView.addSubview(headerTitle)
         
+        self.addSubview(imageView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class GameCharacterFooter: UICollectionReusableView{
+    
+    
+}
+
+class GameCharacterCell: UICollectionViewCell{
+    
+    var titleLabel: UILabel?
+    var imageView: UIImageView?
+    
+    var gameCharacter: GameCharacter?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+
         let backgroundImageView = UIImageView(frame: frame)
         backgroundImageView.image = #imageLiteral(resourceName: "red_button06")
         backgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -49,6 +99,11 @@ class GameCharacterCell: UICollectionViewCell{
         imageView.addSubview(titleLabel)
         contentView.addSubview(imageView)
         
+    }
+    
+    convenience init(gameCharacter: GameCharacter, frame: CGRect) {
+        self.init(frame: frame)
+        self.gameCharacter = gameCharacter
     }
     
     
