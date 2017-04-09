@@ -144,25 +144,36 @@ extension GameCharacter{
         get{
             switch(self){
             case .Spikeman:
-                return SKTexture(image: #imageLiteral(resourceName: "spikeMan_jump"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .SpikeMan)?.textureNamed("spikeMan_jump")
             case .Spikeball:
-                return SKTexture(image: #imageLiteral(resourceName: "spikeBall1"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .SpikeBall)?.textureNamed("spikeBall1")
             case .EnemySun:
-                return SKTexture(image: #imageLiteral(resourceName: "sun1"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .EnemySun)?.textureNamed("sun1")
             case .EnemyCloud:
-                return SKTexture(image: #imageLiteral(resourceName: "enemyCloud"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .EnemyCloud)?.textureNamed("enemyCloud")
             case .GoldCoin:
-                return SKTexture(image: #imageLiteral(resourceName: "gold_1"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .GoldCoin)?.textureNamed("gold_1")
             case .SilverCoin:
-                return SKTexture(image: #imageLiteral(resourceName: "silver_1"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .SilverCoin)?.textureNamed("silver_1")
             case .BronzeCoin:
-                return SKTexture(image: #imageLiteral(resourceName: "bronze_1"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .BronzeCoin)?.textureNamed("bronze_1")
             case .GoldCarrot:
-                return SKTexture(image: #imageLiteral(resourceName: "carrot_gold"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Items)?.textureNamed("carrot_gold")
             case .RegularCarrot:
-                return SKTexture(image: #imageLiteral(resourceName: "carrot"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Items)?.textureNamed("carrot")
+            case .JetPack:
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Items)?.textureNamed("jetpack")
+            case .OrangePortal:
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Items)?.textureNamed("portal_orange")
+            case .YellowPortal:
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Items)?.textureNamed("portal_yellow")
+            case .BubbleCover:
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Items)?.textureNamed("bubble")
+            case .EdgeSpikes:
+                 return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Spikes)?.textureNamed("spikes_top")
             default:
-                return SKTexture(image: #imageLiteral(resourceName: "spikeMan_jump"))
+                return TextureAtlasManager.sharedInstance.getTextureAtlas(atlasType: .Spikes)?.textureNamed("spikes_top")
+
                 
             }
 
@@ -191,7 +202,7 @@ extension GameCharacter{
             case .RegularCarrot:
                 return AnimationFactory.sharedInstance.getRegularCarrotDefaultAnimation()
             default:
-                return AnimationFactory.sharedInstance.getRegularCarrotDefaultAnimation()
+                return SKAction()
 
             }
             

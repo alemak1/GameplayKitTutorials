@@ -47,12 +47,14 @@ class CharacterProfileScene: SKScene{
         configureCharacterAnimation()
         
         //Initialize the animation node
-        let textureSize = profileSceneGameCharacter.basicTexture?.size() ?? CGSize(width: 100, height: 100)
+        guard let characterTexture = profileSceneGameCharacter.basicTexture else { return }
         
-        animationNode = SKSpriteNode(color: .clear, size: textureSize)
+        animationNode = SKSpriteNode(texture: characterTexture)
         animationNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         animationNode.position = CGPoint.zero
         animationNode.zPosition = 30
+        animationNode.run(SKAction.setTexture(characterTexture))
+        
         self.addChild(animationNode)
         
        

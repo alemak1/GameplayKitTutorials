@@ -16,6 +16,9 @@ class AnimationFactory{
     static let sharedInstance = AnimationFactory()
     
     
+    //TextureAtlasManager singleton
+    let textureAtlasManager = TextureAtlasManager.sharedInstance
+    
     //BasicAnimations
     var spikemanAnimation: SKAction = SKAction()
     var spikeballAnimation: SKAction = SKAction()
@@ -81,8 +84,7 @@ class AnimationFactory{
     
     private func configureSpikemanAnimation(){
         
-        var texture1 = SKTexture(image: #imageLiteral(resourceName: "spikeMan_walk1"))
-        var texture2 = SKTexture(image: #imageLiteral(resourceName: "spikeMan_walk2"))
+        guard let texture1 = textureAtlasManager.getTextureAtlas(atlasType: .SpikeMan)?.textureNamed("spikeMan_walk1"), let texture2 = textureAtlasManager.getTextureAtlas(atlasType: .SpikeMan)?.textureNamed("spikeMan_walk2") else { return }
         
         
         let walkAction = SKAction.animate(with: [
@@ -95,18 +97,24 @@ class AnimationFactory{
     }
     
     private func configureSpikeBallAnimation(){
+        
+        guard let texture1 = textureAtlasManager.getTextureAtlas(atlasType: .SpikeBall)?.textureNamed("spikeBall1"), let texture2 = textureAtlasManager.getTextureAtlas(atlasType: .SpikeBall)?.textureNamed("spikeBall_2") else { return }
+        
         spikeballAnimation =  SKAction.animate(with: [
-            SKTexture(image: #imageLiteral(resourceName: "spikeBall1")),
-            SKTexture(image: #imageLiteral(resourceName: "spikeBall_2"))
+            texture1,
+            texture2
             ], timePerFrame: 0.25)
         
     }
     
     private func configureEnemySunAnimation(){
         
+        guard let texture1 = textureAtlasManager.getTextureAtlas(atlasType: .EnemySun)?.textureNamed("sun1"), let texture2 = textureAtlasManager.getTextureAtlas(atlasType: .EnemySun)?.textureNamed("sun2") else { return }
+        
+        
         enemySunAnimation = SKAction.animate(with: [
-            SKTexture(image: #imageLiteral(resourceName: "sun1")),
-            SKTexture(image: #imageLiteral(resourceName: "sun2"))
+            texture1,
+            texture2
             
             ], timePerFrame: 0.25)
         
@@ -114,6 +122,9 @@ class AnimationFactory{
     }
     
     private func configureEnemyCloudAnimation(){
+        
+      
+        
         let actionGroup1 = SKAction.group([
             SKAction.scale(to: 0.5, duration: 0.50),
             SKAction.colorize(with: ColorGenerator.getColor(colorType: .LightGrey), colorBlendFactor: 1.00, duration: 0.50)
@@ -136,10 +147,12 @@ class AnimationFactory{
     
     private func configureGoldCoinAnimation(){
         
+         guard let texture1 = textureAtlasManager.getTextureAtlas(atlasType: .GoldCoin)?.textureNamed("gold_1"), let texture2 = textureAtlasManager.getTextureAtlas(atlasType: .GoldCoin)?.textureNamed("gold_2"), let texture3 = textureAtlasManager.getTextureAtlas(atlasType: .GoldCoin)?.textureNamed("gold_3") else { return }
+        
         let turnAction = SKAction.animate(with: [
-            SKTexture(image: #imageLiteral(resourceName: "gold_1")),
-            SKTexture(image: #imageLiteral(resourceName: "gold_2")),
-            SKTexture(image: #imageLiteral(resourceName: "gold_3")),
+            texture1,
+            texture2,
+            texture3
             ], timePerFrame: 0.40)
         
         let reverseTurnAction = turnAction.reversed()
@@ -148,15 +161,20 @@ class AnimationFactory{
             turnAction,
             reverseTurnAction
             ])
+        
         goldCoinAnimation = defaultAction
     }
     
     private func configureSilverCoinAnimation(){
         
+        guard let texture1 = textureAtlasManager.getTextureAtlas(atlasType: .SilverCoin)?.textureNamed("silver_1"), let texture2 = textureAtlasManager.getTextureAtlas(atlasType: .SilverCoin)?.textureNamed("silver_2"), let texture3 = textureAtlasManager.getTextureAtlas(atlasType: .SilverCoin)?.textureNamed("silver_3") else { return }
+        
+
+        
         let turnAction =  SKAction.animate(with: [
-            SKTexture(image: #imageLiteral(resourceName: "silver_1")),
-            SKTexture(image: #imageLiteral(resourceName: "silver_2")),
-            SKTexture(image: #imageLiteral(resourceName: "silver_3")),
+            texture1,
+            texture2,
+            texture3
             ], timePerFrame: 0.40)
         
         let reverseTurnAction = turnAction.reversed()
@@ -171,10 +189,12 @@ class AnimationFactory{
     
     private func configureBronzeCoinAnimation(){
         
+         guard let texture1 = textureAtlasManager.getTextureAtlas(atlasType: .BronzeCoin)?.textureNamed("bronze_1"), let texture2 = textureAtlasManager.getTextureAtlas(atlasType: .BronzeCoin)?.textureNamed("bronze_2"), let texture3 = textureAtlasManager.getTextureAtlas(atlasType: .BronzeCoin)?.textureNamed("bronze_3") else { return }
+        
         let turnAction = SKAction.animate(with: [
-            SKTexture(image: #imageLiteral(resourceName: "bronze_1")),
-            SKTexture(image: #imageLiteral(resourceName: "bronze_2")),
-            SKTexture(image: #imageLiteral(resourceName: "bronze_3")),
+            texture1,
+            texture2,
+            texture3
             ], timePerFrame: 0.40)
         
         let reverseTurnAction = turnAction.reversed()
