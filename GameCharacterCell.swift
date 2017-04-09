@@ -68,9 +68,9 @@ class GameCharacterCell: UICollectionViewCell{
     var gameCharacter: GameCharacter?
     
     var characterTitle: String?{
-        set(newTItle){
-            if let charTitle = newTItle{
-                titleLabel?.text = charTitle
+        set(newText){
+            if let characterTitle = newText, let label = titleLabel{
+                label.text = characterTitle
             }
         }
         
@@ -98,7 +98,7 @@ class GameCharacterCell: UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureContentView()
+        configureContentView(primaryFrame: frame)
 
     }
     
@@ -111,44 +111,69 @@ class GameCharacterCell: UICollectionViewCell{
     
  
     
-    private func configureContentView(){
-        let backgroundImageView = UIImageView(frame: frame)
+    private func configureContentView(primaryFrame: CGRect){
+        
+        //Background views for the cell (in both selected and unselected state) are set to a default image but can changed dynamically in the data source and delegate methods for the collection view
+        configureDefaultBackgroundView(primaryFrame: primaryFrame)
+        
+      
+        //Configure the dimensions for the ImageView; the image will be set dynamically in the data source method for the collection view
+        let imageViewFrame = CGRect(x: primaryFrame.width*0.10, y: primaryFrame.height*0.20, width: primaryFrame.size.width*0.80, height: primaryFrame.size.height*0.50)
+        
+        configureCellImageView(imageViewFrame: imageViewFrame)
+      
+        
+        //Configure the dimensions for the LabelView; the text will be set dynamically in the data source method for the collection view
+        configureTitleLabel(imageViewFrame: imageViewFrame)
+    
+        //Add the ImageView and LabelView as subviews to the cell's contentView
+        addCellSubviews()
+        
+    }
+    
+    private func configureDefaultBackgroundView(primaryFrame: CGRect){
+        let backgroundImageView = UIImageView(frame: primaryFrame)
         backgroundImageView.image = #imageLiteral(resourceName: "red_button06")
         backgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
         backgroundView = backgroundImageView
         
-        let selectedBackgroundImageView = UIImageView(frame: frame)
+        let selectedBackgroundImageView = UIImageView(frame: primaryFrame)
         selectedBackgroundImageView.image = #imageLiteral(resourceName: "red_button07")
         selectedBackgroundImageView.contentMode = UIViewContentMode.scaleAspectFit
         selectedBackgroundView = selectedBackgroundImageView
+    }
+    
+    private func configureTitleLabel(imageViewFrame: CGRect){
+        let labelFrameWidth = imageViewFrame.width*0.90
+        let labelFrameHeight = imageViewFrame.height*0.90
+        let labelFrameXPos = CGFloat(0.0) // imageViewFrame.height*0.05
+        let labelFrameYPos = CGFloat(0.0) //imageViewFrame.height*0.90
         
-        let xInset = frame.size.width*0.10
-        let yInset = frame.size.height*0.08
+        let labelFrame = CGRect(x: labelFrameXPos, y: labelFrameYPos, width: labelFrameWidth, height: labelFrameHeight)
         
-        let imageViewFrame = CGRect(x: backgroundImageView.frame.width*0.10, y: backgroundImageView.frame.height*0.20, width: backgroundImageView.frame.width*0.80, height: backgroundImageView.frame.height*0.50)
+        titleLabel = UILabel(frame: labelFrame)
+        
+        if let label = titleLabel{
+            label.font = UIFont(name: FontNames.NoteworthLight, size: 10.0)
+            label.textAlignment = .center
+            label.textColor = ColorGenerator.getColor(colorType: .RedCollectionCellFontColor)
+        
+        }
+    }
+
+    
+    private func configureCellImageView(imageViewFrame: CGRect){
         imageView = UIImageView(frame: imageViewFrame)
         imageView?.contentMode = UIViewContentMode.scaleAspectFit
         
-        let labelFrameWidth = imageViewFrame.width*0.90
-        let labelFrameHeight = imageViewFrame.height*0.90
-        //  let labelFrameXPos = imageViewFrame.height*0.05
-        // let labelFrameYPos = imageViewFrame.height*0.90
-        
-        let labelFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        titleLabel = UILabel(frame: labelFrame)
-        
-        titleLabel?.font = UIFont(name: FontNames.NoteworthyBold, size: 10.0)
-        titleLabel?.textAlignment = .center
-        titleLabel?.textColor = ColorGenerator.getColor(colorType: .RedCollectionCellFontColor)
-        
-
-        if(imageView != nil){
-            if(titleLabel != nil){
-                imageView!.addSubview(titleLabel!)
-            }
+    }
+    
+    
+    private func addCellSubviews(){
+        if(imageView != nil && titleLabel != nil){
+            imageView!.addSubview(titleLabel!)
             contentView.addSubview(imageView!)
         }
-  
         
     }
 }

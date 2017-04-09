@@ -9,13 +9,15 @@
 import Foundation
 import UIKit
 import SpriteKit
-
+import GameplayKit
 
 
 class CharacterProfileVC: UIViewController{
     
     var characterProfileScene: CharacterProfileScene?
-    var skView: SKView?
+    var sceneView: SKView?
+    var titleLabel: UILabel?
+    var descriptionLabel: UILabel?
     
     var gameCharacter: GameCharacter = .Spikeman
     
@@ -33,42 +35,81 @@ class CharacterProfileVC: UIViewController{
         
         self.gameCharacter = gameCharacter
         
-        let width = view.bounds.width*0.50
-        let height = view.bounds.height*0.50
-        let sceneSize = CGSize(width: width, height: height)
-        
-        switch(gameCharacter){
-            case .Spikeman:
-                characterProfileScene = CharacterProfileScene(size: sceneSize, gameCharacter: .Spikeman)
-                break
-            default:
-                break
-        }
+    
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        
+        //Set background color for the CharacterProfileScene
+        view.backgroundColor = ColorGenerator.getColor(colorType: .SkyBlue)
+
+        //Set the SceneView and LabelViews
+        sceneView = SKView()
+        titleLabel = UILabel()
+        descriptionLabel = UILabel()
+        
+        if let sceneView = sceneView, let titleLabel = titleLabel, let descriptionLabel = descriptionLabel{
+            
+            view.addSubview(sceneView)
+            view.addSubview(titleLabel)
+            view.addSubview(descriptionLabel)
+            
+            
+            titleLabel.font = UIFont(name: FontNames.NoteworthyBold, size: 60.0)
+            titleLabel.textAlignment = .center
+            titleLabel.text = gameCharacter.title
+            
+            descriptionLabel.font = UIFont(name: FontNames.Noteworthy, size: 20.0)
+            descriptionLabel.textAlignment = .center
+            descriptionLabel.adjustsFontSizeToFitWidth = true
+            descriptionLabel.textColor = ColorGenerator.getColor(colorType: .DeepSeaBlue)
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.text = gameCharacter.description
     
-        if(characterProfileScene != nil){
+        
+            //Configure the constraints for all the subviews
+            sceneView.translatesAutoresizingMaskIntoConstraints = false
+            descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
             
-            skView?.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+              
+                titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0.0),
+                titleLabel.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 10.0),
+                titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
+                titleLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.10),
+                
+                sceneView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0.00),
+                sceneView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30.00),
+                sceneView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
+                sceneView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.30),
+                
+                descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0.0),
+                descriptionLabel.topAnchor.constraint(equalTo: sceneView.bottomAnchor, constant: 10.00),
+                descriptionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.90),
+                descriptionLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.40)
+                
+                ])
             
-            let insetDeltaX = view.bounds.width*0.30
-            let insetDeltaY = view.bounds.height*0.40
+            let sceneSize = sceneView.frame.size
             
-            let skViewRect = view.bounds.insetBy(dx: insetDeltaX, dy: insetDeltaY)
-            skView = SKView(frame: skViewRect)
+            characterProfileScene = CharacterProfileScene(size: sceneSize, gameCharacter: gameCharacter)
+            
+            if let characterProfileScene = characterProfileScene{
+                characterProfileScene.scaleMode = .resizeFill
+                sceneView.presentScene(characterProfileScene)
+
+            }
     
         }
+        
+
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let characterScene = self.characterProfileScene{
-            skView?.presentScene(characterScene)
-        }
-    }
+    
+   
     
     
 }

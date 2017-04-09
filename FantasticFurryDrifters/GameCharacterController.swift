@@ -94,7 +94,9 @@ extension GameCharacterController{
         cell.selectedBackgroundView = selectedBackgroundImageView
         
         cell.characterImage = gameCharacter.image
-        cell.characterTitle = gameCharacter.title
+        
+        //TODO: *********** FIX BUG ASSOCIATED WITH ADDING CELL TITLE
+        //cell.characterTitle = gameCharacter.title
         cell.gameCharacter = gameCharacter
         
         let cellTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameCharacterController.presentCharacterProfileVC(sender:)))
@@ -226,8 +228,8 @@ private extension GameCharacterController{
         if let cell = sender.view as? GameCharacterCell, let gameCharacter = cell.gameCharacter{
             
             let charProfileVC = CharacterProfileVC(gameCharacter: gameCharacter)
-            present(charProfileVC, animated: true, completion: nil)
-          
+            navigationController?.pushViewController(charProfileVC, animated: true)
+
         }
         
     }

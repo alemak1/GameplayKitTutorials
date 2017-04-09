@@ -127,6 +127,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD26F7CD1E99C4FF001AAED7 /* LevelLoaderController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LevelLoaderController;
+			sourceTree = "<group>";
+		};
+		BD26F7CE1E99C522001AAED7 /* ReusableViewsAndCells */ = {
+			isa = PBXGroup;
+			children = (
+				BD28BD911E98B2000017B393 /* GameCharacterCell.swift */,
+			);
+			name = ReusableViewsAndCells;
+			sourceTree = "<group>";
+		};
 		BD2742551E9648ED0037165E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,7 +170,7 @@
 		BD28BD951E98C4F30017B393 /* GameCharacterController */ = {
 			isa = PBXGroup;
 			children = (
-				BD28BD911E98B2000017B393 /* GameCharacterCell.swift */,
+				BD26F7CE1E99C522001AAED7 /* ReusableViewsAndCells */,
 				BD28BD8F1E98ABB30017B393 /* GameCharacterController.swift */,
 				BD35F2551E98F0A700487DDF /* GameCharacterCollectionLayout.swift */,
 				BD35F2571E990D5B00487DDF /* CharacterProfileVC.swift */,
@@ -184,6 +199,7 @@
 		BD6BE3D01E9600D9006EF619 /* FantasticFurryDrifters */ = {
 			isa = PBXGroup;
 			children = (
+				BD26F7CD1E99C4FF001AAED7 /* LevelLoaderController */,
 				BD28BD951E98C4F30017B393 /* GameCharacterController */,
 				BD2872491E9720B8009F9333 /* Managers */,
 				BD27426C1E965C7E0037165E /* Encounters */,

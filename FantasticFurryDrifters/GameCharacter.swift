@@ -64,7 +64,7 @@ enum GameCharacter{
         get{
             switch(self){
                 case .Spikeman:
-                    return "Spikeman runs along the edges of the screen, waiting for Riddle Rabbit stuck on his deadly spike.  Once impaled on the Spike, the player is damaged and cannot move any further. Try as much as possible to avoid"
+                    return "Spikeman runs along the edges of the screen, waiting for Riddle Rabbit to get stuck on his deadly spike.  Once impaled on Spikeman's spiky head, the player is damaged and cannot move any further. Try as much as possible to avoid this nasty critter!"
                 case .Spikeball:
                     return "Spikeball is constantly spinning in the air, sometimes moving back and forth, sometimes moving in random directions, and sometimes even trying to chase Riddle Rabbit"
                 case .EdgeSpikes:
