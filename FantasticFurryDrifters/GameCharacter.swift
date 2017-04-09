@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 import UIKit
 
 enum GameCharacter{
@@ -24,6 +25,7 @@ enum GameCharacter{
     case YellowPortal
     case RegularCarrot
     case GoldCarrot
+    
     
     var title: String?{
         get{
@@ -132,6 +134,69 @@ enum GameCharacter{
         }
     }
     
+    
+}
+
+
+extension GameCharacter{
+    
+    var basicTexture: SKTexture?{
+        get{
+            switch(self){
+            case .Spikeman:
+                return SKTexture(image: #imageLiteral(resourceName: "spikeMan_jump"))
+            case .Spikeball:
+                return SKTexture(image: #imageLiteral(resourceName: "spikeBall1"))
+            case .EnemySun:
+                return SKTexture(image: #imageLiteral(resourceName: "sun1"))
+            case .EnemyCloud:
+                return SKTexture(image: #imageLiteral(resourceName: "enemyCloud"))
+            case .GoldCoin:
+                return SKTexture(image: #imageLiteral(resourceName: "gold_1"))
+            case .SilverCoin:
+                return SKTexture(image: #imageLiteral(resourceName: "silver_1"))
+            case .BronzeCoin:
+                return SKTexture(image: #imageLiteral(resourceName: "bronze_1"))
+            case .GoldCarrot:
+                return SKTexture(image: #imageLiteral(resourceName: "carrot_gold"))
+            case .RegularCarrot:
+                return SKTexture(image: #imageLiteral(resourceName: "carrot"))
+            default:
+                return SKTexture(image: #imageLiteral(resourceName: "spikeMan_jump"))
+                
+            }
+
+        }
+    }
+    
+    var basicAnimation: SKAction?{
+        get{
+            switch(self){
+            case .Spikeman:
+                return AnimationFactory.sharedInstance.getSpikemanDefaultAnimation()
+            case .Spikeball:
+                return AnimationFactory.sharedInstance.getSpikeballDefaultAnimation()
+            case .EnemySun:
+                return AnimationFactory.sharedInstance.getEnemySunDefaultAnimation()
+            case .EnemyCloud:
+                return AnimationFactory.sharedInstance.getEnemyCloudDefaultAnimation()
+            case .GoldCoin:
+                return AnimationFactory.sharedInstance.getGoldCoinDefaultAnimation()
+            case .SilverCoin:
+                return AnimationFactory.sharedInstance.getSilverCoinDefaultAnimation()
+            case .BronzeCoin:
+                return AnimationFactory.sharedInstance.getBronzeCoinDefaultAnimation()
+            case .GoldCarrot:
+                return AnimationFactory.sharedInstance.getGoldCarrotDefaultAnimation()
+            case .RegularCarrot:
+                return AnimationFactory.sharedInstance.getRegularCarrotDefaultAnimation()
+            default:
+                return AnimationFactory.sharedInstance.getRegularCarrotDefaultAnimation()
+
+            }
+            
+        }
+    }
     
 }
 

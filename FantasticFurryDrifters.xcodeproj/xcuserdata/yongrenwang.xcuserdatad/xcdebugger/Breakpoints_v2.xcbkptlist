@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FantasticFurryDrifters/GameCharacter.swift"
-            timestampString = "513353965.247979"
+            timestampString = "513403298.418754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "GameCharacter"
             landmarkType = "13">
          </BreakpointContent>

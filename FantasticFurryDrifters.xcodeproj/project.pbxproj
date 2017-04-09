@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD26F7D01E99DFDA001AAED7 /* AnimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD26F7CF1E99DFDA001AAED7 /* AnimationFactory.swift */; };
 		BD2742541E9646110037165E /* Spikeball.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2742531E9646110037165E /* Spikeball.swift */; };
 		BD2742571E9648F70037165E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2742561E9648F70037165E /* Constants.swift */; };
 		BD2742591E9649720037165E /* SpikeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2742581E9649720037165E /* SpikeEdge.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD26F7CF1E99DFDA001AAED7 /* AnimationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFactory.swift; sourceTree = "<group>"; };
 		BD2742531E9646110037165E /* Spikeball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spikeball.swift; sourceTree = "<group>"; };
 		BD2742561E9648F70037165E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD2742581E9649720037165E /* SpikeEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpikeEdge.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				BD28724A1E9720CD009F9333 /* EntityManager.swift */,
 				BD30140A1E9758EB00F54F7E /* ColorGenerator.swift */,
 				BD30140E1E975C5000F54F7E /* RandomGenerator.swift */,
+				BD26F7CF1E99DFDA001AAED7 /* AnimationFactory.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				BD2742591E9649720037165E /* SpikeEdge.swift in Sources */,
 				BD35F2561E98F0A700487DDF /* GameCharacterCollectionLayout.swift in Sources */,
 				BD27425B1E965A760037165E /* EdgeGroup.swift in Sources */,
+				BD26F7D01E99DFDA001AAED7 /* AnimationFactory.swift in Sources */,
 				BD2742631E965B740037165E /* Carrot.swift in Sources */,
 				BD2E01D71E97D1E100AE0004 /* GKSpikemanBottom.swift in Sources */,
 				BD30140B1E9758EB00F54F7E /* ColorGenerator.swift in Sources */,
